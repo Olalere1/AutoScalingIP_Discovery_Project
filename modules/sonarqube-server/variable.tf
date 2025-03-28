@@ -1,0 +1,12 @@
+variable "ubuntu-ami-id" {}
+variable "instance-type" {}
+variable "key-name" {}
+variable "subnet-id" {}
+variable "sonarqube-sg" {}
+variable "nr-key" {}
+variable "nr-acc-id" {}
+variable "nr-region" {}
+variable "cert-arn" {}
+variable "sonar-postgress-pwd" {}
+variable "sonar-psqldb-pwd" {}
+variable "public-subnets" {}
