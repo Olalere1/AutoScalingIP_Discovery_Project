@@ -1,11 +1,14 @@
 # Local .terraform directories
 **/.terraform/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # .tfstate files
 *.tfstate
 *.tfstate.*
 =======
+=======
+>>>>>>> d5c29436427204eaa43f86a058b8e05161ffdb79
 .terraform.lock.hcl
 # .tfstate files
 *.tfstate
@@ -13,7 +16,10 @@
 **/.pem
 *.pem
 */*.pem
+<<<<<<< HEAD
 >>>>>>> 82dfa1b (working directory)
+=======
+>>>>>>> d5c29436427204eaa43f86a058b8e05161ffdb79
 
 # Crash log files
 crash.log
@@ -25,10 +31,14 @@ crash.*.log
 # to change depending on the environment.
 *.tfvars
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.tfvars.json
 =======
 # *.tfvars.json
 >>>>>>> 82dfa1b (working directory)
+=======
+# *.tfvars.json
+>>>>>>> d5c29436427204eaa43f86a058b8e05161ffdb79
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
@@ -38,11 +48,14 @@ override.tf.json
 *_override.tf.json
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Ignore transient lock info files created by terraform apply
 .terraform.tfstate.lock.info
 
 =======
 >>>>>>> 82dfa1b (working directory)
+=======
+>>>>>>> d5c29436427204eaa43f86a058b8e05161ffdb79
 # Include override files you do wish to add to version control using negated pattern
 # !example_override.tf
 
@@ -52,7 +65,11 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 <<<<<<< HEAD
+<<<<<<< HEAD
 terraform.rc
 =======
 terraform.rc.DS_Store
 >>>>>>> 82dfa1b (working directory)
+=======
+terraform.rc.DS_Store
+>>>>>>> d5c29436427204eaa43f86a058b8e05161ffdb79
