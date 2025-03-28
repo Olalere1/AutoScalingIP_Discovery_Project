@@ -1,0 +1,9 @@
+variable "redhat-ami-id" {}
+variable "instance-type" {}
+variable "key-name" {}
+variable "bastion-subnet" {}
+variable "bastion-sg" {}
+variable "private-key-name" {}
+variable "nr-region" {}
+variable "nr-key" {}
+variable "nr-acc-id" {}

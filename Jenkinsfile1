@@ -1,0 +1,85 @@
+pipeline {
+    agent any
+    environment {
+        NEXUS_USER = credentials('nexus-username')
+        NEXUS_PASSWORD = credentials('nexus-password')
+        NEXUS_REPO = credentials('nexus-repo')
+        NVDKEY  = credentials('nvd-key')
+        ANSIBLE_IP  = credentials('ansible-ip')
+    }
+    stages {
+        stage('Code Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh 'mvn sonar:sonar'
+                }   
+            }
+        }
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 2, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+        stage('Dependency Check') {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey ${NVDKEY}', odcInstallation: 'DP-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+        stage('STAST report slack notification') {
+            steps {
+                slackSend channel: '24th-february-auto-discovery-project', message: 'Security Scan report generated and waiting for review before approval ', teamDomain: 'Cloudhight', tokenCredentialId: 'slack-cred'
+            }
+        }
+        stage('Security cleared Approval') {
+            steps {
+                timeout(activity: true, time: 10) {
+                    input message: 'Needs Approval ', submitter: 'admin'
+                }
+            }
+        }
+        // stage('Test Code') {
+        //     steps {
+        //         sh 'mvn test -Dcheckstyle.skip'
+        //     }
+        // }
+        stage('Trigger job2 for app deployment to enviroment') {
+            steps {
+                build wait: false, job: 'Jenkins-Job2-App-build-deploy'
+              script {
+                  slackSend(
+                    channel: '24th-february-auto-discovery-project',
+                    message: 'Triggering job2 for app deployment to evnviroments',
+                    tokenCredentialId: 'slack-cred',
+                    color: '#FFFF00' // Yellow for ongoing process
+                  )
+                }
+            }
+        }
+    }
+    post {
+        failure {
+            script {
+                slackSend(
+                  channel: '24th-february-auto-discovery-project',
+                  message: "Pipeline failed during on job 1",
+                  tokenCredentialId: 'slack-cred',
+                  color: '#FF0000' // Red for failure
+                )
+            }
+        }
+        success {
+            script {
+                slackSend(
+                  channel: '24th-february-auto-discovery-project',
+                  message: "Job1 pipeline executed successfully on Jenkins Docker slave.",
+                  tokenCredentialId: 'slack-cred',
+                  color: '#36A64F' // Green for success
+                )
+            }
+        }
+    }
+    
+}
