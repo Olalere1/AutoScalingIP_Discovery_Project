@@ -2,7 +2,7 @@
 ![image](https://github.com/user-attachments/assets/3fd22c52-f6a8-4b6b-80ba-cb75e157d41d)
 
 
-# 24th-february-auto-discovery-project
+# 24th-March-auto-discovery-project - Independent assessment
 # To be added to jenkins master server after infrastructure provisioning
 <!-- #sudo cat <<EOT>> /etc/docker/daemon.json
 {
