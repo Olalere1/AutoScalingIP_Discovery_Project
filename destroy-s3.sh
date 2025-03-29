@@ -11,7 +11,7 @@ LOCAL_NAME="auto-discovery-mono-app"
 DYNAMODB_TABLE_NAME="${LOCAL_NAME}-dynamodb"
 S3_BUCKET_NAME="${LOCAL_NAME}-s3"
 AWS_REGION="eu-west-1"
-AWS_PROFILE="petproject"  
+AWS_PROFILE="cbauser_admin"  
 
 # Function to check command success
 check_success() {

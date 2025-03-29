@@ -18,7 +18,7 @@ resource "aws_db_instance" "rds-instance" {
   #checkov:skip=CKV_AWS_293: RDS deletion protectoin will be enfored on the stage/production environment
   #checkov:skip=CKV_AWS_354: RDS encryption will be enfored on the stage/production environment
   #checkov:skip=CKV_AWS_161: RDS IAM authentication will be enfored on the stage/production environment
-  identifier             = "petclinic"
+  identifier             = "petclinic-rds"
   allocated_storage      = 20
   engine                 = "mysql"       # Change to "postgres", "mariadb", etc. if needed
   engine_version         = "5.7"         # Change version based on requirements

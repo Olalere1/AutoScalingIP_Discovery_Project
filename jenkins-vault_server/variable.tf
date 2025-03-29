@@ -5,7 +5,7 @@ variable "region" {
 }
 
 variable "profile" {                   # AWS profile likely to be changed - Olalere
-  default = "petproject"
+  default = "cbauser_admin"
 }
 variable "ami-ubuntu" {
   default = "ami-091f18e98bc129c4e" #Ubuntu ami for Vault server

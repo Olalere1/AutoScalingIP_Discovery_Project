@@ -7,7 +7,7 @@ LOCAL_NAME="auto-discovery-mono-app"
 BUCKET_NAME="${LOCAL_NAME}-s3"
 TABLE_NAME="${LOCAL_NAME}-dynamodb"
 AWS_REGION="eu-west-1"
-AWS_PROFILE="petproject"
+AWS_PROFILE="cbauser_admin"
 
 echo "Creating S3 bucket: $BUCKET_NAME ..."
 aws s3api create-bucket --bucket "$BUCKET_NAME" --region "$AWS_REGION" --profile "$AWS_PROFILE" --create-bucket-configuration LocationConstraint="$AWS_REGION" 
