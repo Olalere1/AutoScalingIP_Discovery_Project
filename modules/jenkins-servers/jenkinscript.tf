@@ -47,7 +47,7 @@ sudo mkdir /opt/build
 sudo chmod 777 /opt/build
 
 
-# curl -sO http://18.169.158.136:8080/jnlpJars/agent.jar        # You might have to change line 50-52 as per guildance - Olalere
+# curl -sO http://18.169.158.136:8080/jnlpJars/agent.jar     # You might have to change line 50-52 as per READ.me guidance Step 2 - Olalere
 # sudo mv ~/agent.jar /opt && cd /opt
 # java -jar agent.jar -url http://18.169.158.136:8080/ -secret 7b0837763f5735a017a2be09fced99a177dd68b1b3443f1bebefab939600da00 -name "jenkins-node" -webSocket -workDir "/opt/build"
 

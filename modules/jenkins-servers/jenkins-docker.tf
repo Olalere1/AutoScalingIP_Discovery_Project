@@ -18,7 +18,7 @@ systemctl status docker
 sed -i  -e '14aExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:4243' -e '14d' /lib/systemd/system/docker.service
 systemctl daemon-reload
 service docker restart
-git clone https://github.com/VictorA07/docker-jenkins-slave.git; cd docker-jenkins-slave           # Observe the cloning of an external public git - Olalere
+git clone https://github.com/VictorA07/docker-jenkins-slave.git; cd docker-jenkins-slave        # Observe the cloning of an external public git - Olalere
 docker build -t my-jenkins-slave .
 sudo chmod 777 /var/run/docker.sock
 
