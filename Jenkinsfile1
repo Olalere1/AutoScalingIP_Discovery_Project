@@ -6,6 +6,7 @@ pipeline {
         NEXUS_REPO = credentials('nexus-repo')
         NVDKEY  = credentials('nvd-key')
         ANSIBLE_IP  = credentials('ansible-ip')
+        SLACK_CHANNEL = credentials('slack-channel')          # newly added by me - Olalere
     }
     stages {
         stage('Code Analysis') {
@@ -30,7 +31,7 @@ pipeline {
         }
         stage('STAST report slack notification') {
             steps {
-                slackSend channel: '24th-february-auto-discovery-project', message: 'Security Scan report generated and waiting for review before approval ', teamDomain: 'Cloudhight', tokenCredentialId: 'slack-cred'
+                slackSend channel: '$SLACK_CHANNEL', message: 'Security Scan report generated and waiting for review before approval ', teamDomain: 'Cloudhight', tokenCredentialId: 'slack-cred'
             }
         }
         stage('Security cleared Approval') {
@@ -50,7 +51,7 @@ pipeline {
                 build wait: false, job: 'Jenkins-Job2-App-build-deploy'
               script {
                   slackSend(
-                    channel: '24th-february-auto-discovery-project',
+                    channel: '$SLACK_CHANNEL',
                     message: 'Triggering job2 for app deployment to evnviroments',
                     tokenCredentialId: 'slack-cred',
                     color: '#FFFF00' // Yellow for ongoing process
@@ -63,7 +64,7 @@ pipeline {
         failure {
             script {
                 slackSend(
-                  channel: '24th-february-auto-discovery-project',
+                  channel: '$SLACK_CHANNEL',
                   message: "Pipeline failed during on job 1",
                   tokenCredentialId: 'slack-cred',
                   color: '#FF0000' // Red for failure
@@ -73,7 +74,7 @@ pipeline {
         success {
             script {
                 slackSend(
-                  channel: '24th-february-auto-discovery-project',
+                  channel: '$SLACK_CHANNEL',
                   message: "Job1 pipeline executed successfully on Jenkins Docker slave.",
                   tokenCredentialId: 'slack-cred',
                   color: '#36A64F' // Green for success

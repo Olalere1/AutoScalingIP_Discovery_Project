@@ -41,6 +41,6 @@ sudo systemctl restart docker
 
 curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY="${var.nr-key}" NEW_RELIC_ACCOUNT_ID="${var.nr-acc-id}" NEW_RELIC_REGION="${var.nr-region}" /usr/local/bin/newrelic install -y
 
-sudo hostnamectl set-hostname jenkins
+sudo hostnamectl set-hostname jenkins-master
 EOF  
 }

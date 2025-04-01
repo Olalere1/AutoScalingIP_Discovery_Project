@@ -8,6 +8,7 @@ pipeline{
         NEXUS_REPO = credentials('nexus-repo')
         NVDKEY  = credentials('nvd-key')
         ANSIBLE_IP  = credentials('ansible-ip')
+        SLACK_CHANNEL = credentials('slack-channel')          # newly added by me - Olalere
     }
     stages {
         stage('Build Artifact') {
@@ -59,7 +60,7 @@ pipeline{
         }
         stage('Trivy report slack notification') {
             steps {
-                slackSend channel: '24th-february-auto-discovery-project', message: 'Image Security Scan report generated and waiting for review before approval ', teamDomain: 'Cloudhight', tokenCredentialId: 'slack-cred'
+                slackSend channel: '$SLACK_CHANNEL', message: 'Image Security Scan report generated and waiting for review before approval ', teamDomain: 'Cloudhight', tokenCredentialId: 'slack-cred'
             }
         }
         stage('Security cleared Approval (trivy)') {
@@ -80,7 +81,7 @@ pipeline{
             steps {
               script {
                   slackSend(
-                    channel: '24th-february-auto-discovery-project',
+                    channel: '$SLACK_CHANNEL',
                     message: 'Starting deployment to stage environment...',
                     tokenCredentialId: 'slack-cred',
                     color: '#FFFF00' // Yellow for ongoing process
@@ -103,7 +104,7 @@ pipeline{
                   catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
                   script {
                     slackSend(
-                      channel: '24th-february-auto-discovery-project',
+                      channel: '$SLACK_CHANNEL',
                       message: 'Starting Dynamic application security test...',
                       tokenCredentialId: 'slack-cred',
                       color: '#FFFF00' // Yellow for ongoing process
@@ -115,7 +116,7 @@ pipeline{
                   '''
                   script {
                     slackSend(
-                      channel: '24th-february-auto-discovery-project',
+                      channel: '$SLACK_CHANNEL',
                       message: 'Dynamic application security test completed successfully.',
                       tokenCredentialId: 'slack-cred',
                       color: '#FFFF00' // Yellow for ongoing process
@@ -128,7 +129,7 @@ pipeline{
             steps {
               script {
                   slackSend(
-                    channel: '24th-february-auto-discovery-project',
+                    channel: '$SLACK_CHANNEL',
                     message: 'Waiting for Approval for prod deployment',
                     tokenCredentialId: 'slack-cred',
                     color: '#FFFF00' // Yellow for ongoing process
@@ -150,7 +151,7 @@ pipeline{
             steps {
                 script {
                   slackSend(
-                    channel: '24th-february-auto-discovery-project',
+                    channel: '$SLACK_CHANNEL',
                     message: 'Starting deployment to production environment...',
                     tokenCredentialId: 'slack-cred',
                     color: '#FFFF00' // Yellow for ongoing process
@@ -173,7 +174,7 @@ pipeline{
           failure {
               script {
                   slackSend(
-                    channel: '24th-february-auto-discovery-project',
+                    channel: '$SLACK_CHANNEL',
                     message: "Pipeline failed during on job 2",
                     tokenCredentialId: 'slack-cred',
                     color: '#FF0000' // Red for failure
@@ -183,7 +184,7 @@ pipeline{
           success {
               script {
                   slackSend(
-                    channel: '24th-february-auto-discovery-project',
+                    channel: '$SLACK_CHANNEL',
                     message: "Job2 pipeline executed successfully on Jenkins Node Slave",
                     tokenCredentialId: 'slack-cred',
                     color: '#36A64F' // Green for success

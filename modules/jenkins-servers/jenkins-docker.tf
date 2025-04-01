@@ -30,7 +30,8 @@ sudo hostnamectl set-hostname jenkins-docker
 EOF  
 }
 
-######
+###### Manually add this insecure-registries onto jenkins master server after set up of nexus server!
+
 # sudo cat <<EOT>> /etc/docker/daemon.json
 
 # {
