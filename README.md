@@ -137,7 +137,7 @@ SSH into nexus server on the CLI
 Click sign in on the web interphase of the nexus server
 
 cat pop-up directory of the web interphase onto nexus cli to copy password; username=admin
-change password; --> admin123 (disable anonymous access!)
+change password; => admin123 (disable anonymous access!)
 
 - On nexus web server, create 2 repository (1. Maven - named as nexus-repo; 2. Docker - named as docker-repo)
 <!--
