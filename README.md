@@ -209,6 +209,7 @@ On same CLI run:
 -->
 
 Step 7:
+- Change new-relic lience keys on dockerfile and new-relic.yml script
 - Go to application.properties file and change database endpoint (if need be and authentication username/password)
 <!--
 The lastest rds-endpoint can be obtained from the Console output of the infrastructure pipeline job
