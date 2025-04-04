@@ -1,3 +1,5 @@
+#Hardcode slack channel name (instead of using variable - $SLACK_CHANNEL) with specific channel to be used, if slack notification fails in pipeline build
+
 pipeline{
     agent {
         label "jenkins-node"

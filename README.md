@@ -63,8 +63,12 @@ SAVE
 
 Step 2:
 - Update the jenkins node terraform userdata (i.e. in jenkinscript.tf line 50-52) with the jenkins node commands
+<!--
+unresolved understanding!
+-->
 - Update the vault token (i.e. in the provider.tf)
 - Update your vpc and subnet ids (i.e. in the root main.tf)
+- Review the root main.tf script and change all relevant information that need to be updated as per deployed infrastructure.
 
 
 Step 3:
@@ -173,6 +177,8 @@ secret text; admin => nexus-username
 secret text; admin123 => nexus-password
 
 secret text; from jenkins console output, get nexus public IP:8085 and use (ID:nexus-repo) 
+secret text; set up credentials for private infrastructure SSH key to be used by ansible in pipeline to deploy to stage and production [ID:ansible-key]
+
 password; username(jenkins)/password() to jenkins server I suppose! (ID: jenkins-pass)        #Unresolved!
 
 -->
@@ -220,7 +226,21 @@ The lastest rds-endpoint can be obtained from the Console output of the infrastr
 - Build new pipeline job for application deployment
 <!--
 You can use any name for your pipeline (Pet-adoption)
-use EUteam25 branch of the US team Git repo as the Git SCM for your application pipeline build job!
+use Olalere1-present branch of the US team Git repo as the Git SCM for your application pipeline build job!
+
+Hardcode slack channel name (instead of using variable - $SLACK_CHANNEL) with specific channel to be used in the jenkinsfile, if slack notification fails in pipeline build.
+
+echo “${var.private-key-name}” >> /home/ec2-user/.ssh/id_rsa; you might be having challenge ssh-ing from Baston host server to Ansible, that maybe if the key is not copied in the script to the id_rsa; as such you will have to copy it over manually using the text editor (vi)
+
+Troubleshooting note: Always remember to ssh into a server, a check (cat) or edit (vi) script and then rerun (sh). Using this (cat /var/log/cloud-init-output.log) also to troubleshoot instance with running container might help.
+
+Troubleshooting note: Also possibility of checking things manually on your AWS console to fix like - subnet, security group, picking IP address etc
+-->
+
+- Monitor infrastructures and application deployed on New relic
+<!--
+On new relic web interface, go to All Entities - Hosts - click specific infrastructure to see dashboard
+On new relic web interface, go to All Entities - Services (APM) - click specific application deployed, to see dashboard.
 -->
 
 
