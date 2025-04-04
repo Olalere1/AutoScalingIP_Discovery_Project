@@ -13,30 +13,42 @@ EOT -->
 
 Step 1: 
 - Set up Jenkins and Vault Server, S3 bucket and DynamoDB table for state code managment using script create-s3.sh (manually on terminal)
-  <!-- Install necessary plugins to extend jenkins functionalities
-    Docker, ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps depenpency, owaps zap
+  <!-- 
+  - From the main directory do sh create-s3.sh to provision jenkins and vault server
+
+  Install necessary plugins to extend jenkins functionalities
+    Docker(commons, pipeline, API,...), ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps depenpency, owaps zap, git, github, (git client)
 
    -  Also configure terraform in the Jenkins tools
+   -  Not necessary, already in user-data script: Configure Docker in the Jenkins tools also (name=docker, install automatically=from docker.com, download=latest)
 
    - In the system settings, configure terraform - install automatically, version (50312 linux - amd64)
 
    -->
 
 - Initialise vault and store database credentials
-<!-- vault operator init; vault login; vault secrets enable -path=secret/kv; vault kv put secret/database username=petclinic password=petclinic
+<!-- 
+- cd into jenkins-vault_server & ssh into the vault server (IP can be found on main.tf also) using the vault-pri-key.pem created.
+- Then do vault operator init; vault login; vault secrets enable -path=secret/kv; vault kv put secret/database username=petclinic password=petclinic (copy out the vault token to be updated in provider.tf script)
+
 -->
 
-- Create infrastructure (Infra) pipeline ensuring it is parameterised (action - apply/destroy) - using root main.tf.
+- Create infrastructure (Infra) pipeline    
 <!--
+using 1st Jenkinsfile with terraform script (init,fmt,validate, plan, approval, $action) - click lightweight checkout
+Ensuring it is parameterised (action - apply/destroy) - 
+
+Not sure though: #You might need to comment out the profile in backend.tf and provider.tf during infra-pipeline build!
+
 -->
 
 - Setup jenkins
 <!-- 
-- Add your git account in credentials (username with password - as kind, git-cred)
+- Add your git account in credentials (username with password - as kind, use git-token in the password space, ID:git-cred)
 
 - Set up git SCM for the infra pipeline, use jenkinsfile with terraform steps and build.
 
-- Among other steps, check and download SSH keypair from Jenkins infra-pipeline workspace, save/replace in local repo, then also give permission using the chmod 400 .pem, (thereafter keypair to Jenkins global credentials). 
+- Among other steps, check and download SSH keypair from Jenkins infra-pipeline workspace directory, save/replace in local repo, then also give permission using the chmod 400 .pem, (thereafter add keypair to Jenkins global credentials). (This can be done from the cli command as well by ssh into Master server and go to workspace directory)
 
 - Duplicate cli terminal and SSH into jenkins node server using keypair from workspace, check jenkins node ip from console output for ssh purposes -> ssh -i .pem ec2-user@jenkins-node-IP; then exit
 
@@ -47,7 +59,8 @@ Step 1:
 <!-- 
 Create (new) SSH credentials -using SSH username with private key selection, among other settings paste private key of the slave instance (cat ...pem to get)!
 
-Return back to mamanged jenkins - nodes- and create the node; type=permanent agent
+Return back to managed jenkins - nodes- and create the node; type=permanent agent, name= to be used can be found in the jenkinscript.tf (for node)
+Number of executors = 1
 remote root directory = /opt/build
 label=(should be same as node agent specified on jenkinsfile)
 usage=as much as possible
@@ -57,17 +70,23 @@ Host key verification strategy: Manually trusted .....
 Availability: keep this agent online as much as possible
 
 SAVE
-                                   
+Then click on jenkins-node created, you will see some commands, copy the appropriate one -                                  
 -->
 
 
 Step 2:
-- Update the jenkins node terraform userdata (i.e. in jenkinscript.tf line 50-52) with the jenkins node commands
+- Update the jenkins node terraform userdata (i.e. in jenkinscript.tf line 50 and 52) with the jenkins node commands
 <!--
-unresolved understanding!
+/Ensuring you also use current master jenkins ip address in both lines 50 and 52/
+SSH into the jenkins node public Ip server (details can be found from the console output of the infra-pipeline),
+
+run line 50 command on the cli terminal, followed by 51 and 52 (A connected output should be revealed in the cli terminal)
 -->
+
 - Update the vault token (i.e. in the provider.tf)
-- Update your vpc and subnet ids (i.e. in the root main.tf)
+<!--
+- Update your vpc and subnet ids (i.e. in the root main.tf) - The last command in the create-s3.sh automatically does this though!
+-->
 - Review the root main.tf script and change all relevant information that need to be updated as per deployed infrastructure.
 
 
@@ -80,21 +99,22 @@ Step 4:
 <!--
 (Don't bother on this, already in userdata script -> SSH using infra pem, into jenkins cloud (ubuntu) and do sudo hostnamectl to set-hostname to jenkins-cloud, before exiting; Do same for jenkins node (ec2-user)!)
 
-name=docker-slave; click Docker Cloud details and configure;
-docker host uri: tcp://check console output for jenkins cloud public IP
+name=docker-slave (or jenkins-cloud); click Docker Cloud details and configure;
+docker host uri: tcp://check console output for jenkins cloud public IP:port number(4243)
+server credentials - Create a credential on Jenkins using username and password (Jenkins/password), ID: docker-cred (to be used below later)
 click enabled; test connection
 
 click=> Docker Agent template -> Add Docker template;
-label=docker-slave
+label=docker-slave (or jenkins-slave)
 click Enabled
-Name=docker-slave
+Name=docker-slave  (or jenkins-slave)
 Docker Image = Pick image built name from user_data of jenkins-docker.tf (line 22) or SSH into Jenkins docker slave and do "docker image ls" to get image name!
 Remote File System Root = /home/jenkins
 Pull strategy - "never pull"
 Connect method - "connect with SSH"
-Create a credential on Jenkins using username and password (jenkins/password).
+#server credentials - Create a credential on Jenkins using username and password (Jenkins/password), ID: docker-cred.
 SSH key - "use configured SSH credentials (and select appropriate jenkins credential in the dropdown)
-Host key verificstion strategy: Non verifying
+Host key verification strategy: Non verifying
 
 AND SAVE
 -->

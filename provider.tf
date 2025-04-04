@@ -1,6 +1,6 @@
 provider "aws" {
   region  = var.region
-  profile = var.profile
+  profile = var.profile                   #You might need to comment this out in infra-pipeline build!
 }
 
 provider "vault" {
