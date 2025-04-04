@@ -263,6 +263,7 @@ On new relic web interface, go to All Entities - Hosts - click specific infrastr
 On new relic web interface, go to All Entities - Services (APM) - click specific application deployed, to see dashboard.
 -->
 
+- Step 8: Always remember to destroy provisioned infrastructure to avoid excessive billing.
 
 N/B: Variables and sensitive information are in the iac.tfvars and as such passed into .gitignore!
 
