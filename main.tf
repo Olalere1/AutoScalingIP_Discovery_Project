@@ -1,6 +1,6 @@
 locals {
   name = "auto-discovery-mono-app" 
-  
+
   # cert-arn = "arn:aws:acm:eu-west-2:660545536766:certificate/1aae9bcb-1c0e-491b-8a48-c60569ef9aaf"       # Confirm this details! = Olalere
   # jenkins-public-ip = "35.176.153.110"                   # Change this - Olalere
   # jenkins-sg-id = "sg-0d7d8456081c42752"                 # Change this - Olalere

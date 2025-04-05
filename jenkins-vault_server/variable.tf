@@ -4,7 +4,7 @@ variable "region" {
   default = "eu-west-1"
 }
 
-variable "profile" {       # AWS profile likely to be changed - Olalere
+variable "profile" { 
   default = "cbauser_admin"
 }
 variable "ami-ubuntu" {
@@ -68,6 +68,12 @@ variable "allowed-ssh-ips" {
   default     = ["10.0.0.0/16", "192.168.0.0/16"]
 }
 
-variable "nr-key" {}
-variable "nr-acc-id" {}
-variable "nr-region" {}
+variable "nr-key" {
+  default = "eu01xxfbfa5c82f2e8c583a24f75fc22FFFFNRAL"
+}
+variable "nr-acc-id" {
+  default = "6562021"
+}
+variable "nr-region" {
+  default = "eu"
+}

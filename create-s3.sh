@@ -9,6 +9,17 @@ TABLE_NAME="${LOCAL_NAME}-dynamodb"
 AWS_REGION="eu-west-1"
 AWS_PROFILE="cbauser_admin"
 
+# Function to check command success
+check_success() {
+    if [ $? -eq 0 ]; then
+        echo "$1 succeeded."
+    else
+        echo "$1 failed." >&2
+        exit 1
+    fi
+}
+
+
 echo "Creating S3 bucket: $BUCKET_NAME ..."
 aws s3api create-bucket --bucket "$BUCKET_NAME" --region "$AWS_REGION" --profile "$AWS_PROFILE" --create-bucket-configuration LocationConstraint="$AWS_REGION" 
 check_success "S3 bucket creation"
