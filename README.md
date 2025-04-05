@@ -17,7 +17,7 @@ Step 1:
   - From the main directory do sh create-s3.sh to provision jenkins and vault server
 
   Install necessary plugins to extend jenkins functionalities
-    Docker(commons, pipeline, API,...), ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps depenpency, owaps zap, git, github, (git client)
+  Docker(commons, pipeline, API,...), ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps depenpency, owaps zap, git, github, (git client)
 
    -  Also configure terraform in the Jenkins tools
    -  Not necessary, already in user-data script: Configure Docker in the Jenkins tools also (name=docker, install automatically=from docker.com, download=latest)
@@ -30,7 +30,6 @@ Step 1:
 <!-- 
 - cd into jenkins-vault_server & ssh into the vault server (IP can be found on main.tf also) using the vault-pri-key.pem created.
 - Then do vault operator init; vault login; vault secrets enable -path=secret/kv; vault kv put secret/database username=petclinic password=petclinic (copy out the vault token to be updated in provider.tf script)
-
 -->
 
 - Create infrastructure (Infra) pipeline    
@@ -39,7 +38,6 @@ using 1st Jenkinsfile with terraform script (init,fmt,validate, plan, approval, 
 Ensuring it is parameterised (action - apply/destroy) - 
 
 Not sure though: #You might need to comment out the profile in backend.tf and provider.tf during infra-pipeline build!
-
 -->
 
 - Setup jenkins
@@ -162,6 +160,7 @@ Click sign in on the web interphase of the nexus server
 
 cat pop-up directory of the web interphase onto nexus cli to copy password; username=admin
 change password; => admin123 (disable anonymous access!)
+-->
 
 - On nexus web server, create 2 repository (1. Maven - named as nexus-repo; 2. Docker - named as docker-repo)
 <!--
@@ -200,7 +199,6 @@ secret text; from jenkins console output, get nexus public IP:8085 and use (ID:n
 secret text; set up credentials for private infrastructure SSH key to be used by ansible in pipeline to deploy to stage and production [ID:ansible-key]
 
 password; username(jenkins)/password() to jenkins server I suppose! (ID: jenkins-pass)        #Unresolved!
-
 -->
 
 - Complete the configuration of Jenkins systems in the Managed Jenkins
@@ -263,7 +261,12 @@ On new relic web interface, go to All Entities - Hosts - click specific infrastr
 On new relic web interface, go to All Entities - Services (APM) - click specific application deployed, to see dashboard.
 -->
 
-- Step 8: Always remember to destroy provisioned infrastructure to avoid excessive billing.
+Step 8: 
+- Challenges Encountered and Solutions Implemented
+
+
+Step 9: 
+- Always remember to destroy provisioned infrastructure to avoid excessive billing.
 
 N/B: Variables and sensitive information are in the iac.tfvars and as such passed into .gitignore!
 
