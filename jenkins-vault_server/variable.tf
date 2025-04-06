@@ -4,11 +4,11 @@ variable "region" {
   default = "eu-west-1"
 }
 
-variable "profile" { 
+variable "profile" {
   default = "cbauser_admin"
 }
 variable "ami-ubuntu" {
-  default = "ami-091f18e98bc129c4e" #Ubuntu ami for Vault server
+  default = "ami-0df368112825f8d8f" #Ubuntu ami for Vault server to be changed to eu-west-1 type
 }
 variable "domain-name" {
   default = "hullerdata.com"
@@ -23,7 +23,7 @@ variable "jenkins-domain-name" {
   default = "jenkins.hullerdata.com"
 }
 variable "ami_id" {
-  default = "ami-0f9535ac605dc21d5" #Redhat ami for jenkins server
+  default = "ami-09de149defa704528" #Redhat ami for jenkins server to be changed to eu-west-1 type
 }
 
 variable "instance_type" {
