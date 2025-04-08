@@ -1,8 +1,27 @@
 #!/bin/bash
 
+set -e  # Exit immediately if any command fails
+#set -o pipefail  # Catch errors in pipelines
+
 ## Destroy a Jenkins server
 cd ./jenkins-vault_server
-terraform destroy -auto-approve
+# terraform destroy -auto-approve
+
+
+# Destroy infrastructure using Terraform
+echo "Starting terraform destroy..."
+if terraform destroy -auto-approve; then
+  echo "Terraform destroy completed successfully."
+else
+  echo "Terraform destroy failed. Exiting."
+  exit 1
+fi
+
+# Step 2: Wait to ensure AWS resources are fully cleaned up
+echo "Waiting for 30 seconds before cleaning up backend..."
+sleep 30
+
+
 
 # Defining a local name
 LOCAL_NAME="auto-discovery-mono-app"

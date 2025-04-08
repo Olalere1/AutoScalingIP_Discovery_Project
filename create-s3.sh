@@ -48,9 +48,12 @@ check_dynamodb_table() {
     fi
 }
 
-
 # Call function
 check_dynamodb_table "$TABLE_NAME" "$AWS_REGION" "$AWS_PROFILE"
+
+# Step 2: Wait to ensure S3 bucket and DynamoDB table are created
+echo "Waiting for 10 seconds before creating other resources..."
+sleep 10
 
 ## Create a Jenkins server
 cd ./jenkins-vault_server

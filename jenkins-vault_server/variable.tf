@@ -11,16 +11,16 @@ variable "ami-ubuntu" {
   default = "ami-0df368112825f8d8f" #Ubuntu ami for Vault server to be changed to eu-west-1 type
 }
 variable "domain-name" {
-  default = "hullerdata.com"
+  default = "aquinas.site"
 }
 variable "domain-names" {
-  default = "*.hullerdata.com"
+  default = "*.aquinas.site"
 }
 variable "vault-domain-name" {
-  default = "vault.hullerdata.com"
+  default = "vault.aquinas.site"
 }
 variable "jenkins-domain-name" {
-  default = "jenkins.hullerdata.com"
+  default = "jenkins.aquinas.site"
 }
 variable "ami_id" {
   default = "ami-09de149defa704528" #Redhat ami for jenkins server to be changed to eu-west-1 type

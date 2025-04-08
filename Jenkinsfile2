@@ -32,7 +32,7 @@ pipeline{
                 type: 'war']],
                 credentialsId: 'nexus-cred',
                 groupId: 'Petclinic',
-                nexusUrl: 'nexus.hullerdata.com',
+                nexusUrl: 'nexus.aquinas.site',
                 nexusVersion: 'nexus3',
                 protocol: 'https',
                 repository: 'nexus-repo',
@@ -90,9 +90,9 @@ pipeline{
                   )
                 }
                  sh "sleep 90"
-                 sh "curl -s -o /dev/null -w \"%{http_code}\" https://stage.hullerdata.com"
+                 sh "curl -s -o /dev/null -w \"%{http_code}\" https://stage.aquinas.site"
                 script {
-                    def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" https://stage.hullerdata.com", returnStdout: true).trim()
+                    def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" https://stage.aquinas.site", returnStdout: true).trim()
                     if (response == "200") {
                         slackSend(color: 'good', message: "Deployment to stage environment is completed successfuly...The prod enterprise java application is up and running with HTTP status code ${response}.", tokenCredentialId: 'slack-cred')
                     } else {
@@ -114,7 +114,7 @@ pipeline{
                   }
                   sh '''
                     chmod 777 $(pwd)
-                    docker run -v $(pwd):/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t https://stage.hullerdata.com -g gen.conf -r testreport.html
+                    docker run -v $(pwd):/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t https://stage.aquinas.site -g gen.conf -r testreport.html
                   '''
                   script {
                     slackSend(
@@ -160,9 +160,9 @@ pipeline{
                   )
                 }
                  sh "sleep 90"
-                 sh "curl -s -o /dev/null -w \"%{http_code}\" https://prod.hullerdata.com"
+                 sh "curl -s -o /dev/null -w \"%{http_code}\" https://prod.aquinas.site"
                 script {
-                    def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" https://prod.hullerdata.com", returnStdout: true).trim()
+                    def response = sh(script: "curl -s -o /dev/null -w \"%{http_code}\" https://aquinas.site", returnStdout: true).trim()
                     if (response == "200") {
                         slackSend(color: 'good', message: "Deployment to production environment is completed successfuly...The prod enterprise java application is up and running with HTTP status code ${response}.", tokenCredentialId: 'slack-cred')
                     } else {

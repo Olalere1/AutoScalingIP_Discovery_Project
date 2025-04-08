@@ -262,11 +262,17 @@ On new relic web interface, go to All Entities - Services (APM) - click specific
 -->
 
 Step 8: 
-- Challenges Encountered and Solutions Implemented
+- Always remember to destroy provisioned infrastructure to avoid excessive billing.
 
 
 Step 9: 
-- Always remember to destroy provisioned infrastructure to avoid excessive billing.
+- Challenges Encountered and Solutions Implemented
+
+1. In the infrastructure destroy script, Terraform remote backend was always destroyed before the infrastructure destroy commences/completes - meaning I ended up later having to manually destroy turns of infrastructure. To navigate through this challenge, I added a Sleep command and Checks to ensure infrastructure complete destruction before proceeding to remote state backend clean up and confirmation to that.
+
+
+
+
 
 N/B: Variables and sensitive information are in the iac.tfvars and as such passed into .gitignore!
 
