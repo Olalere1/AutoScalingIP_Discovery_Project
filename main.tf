@@ -1,18 +1,21 @@
 locals {
   name = "auto-discovery-mono-app" 
 
-  # cert-arn = "arn:aws:acm:eu-west-2:660545536766:certificate/1aae9bcb-1c0e-491b-8a48-c60569ef9aaf"       # Confirm this details! = Olalere
-  # jenkins-public-ip = "35.176.153.110"                   # Change this - Olalere
-  # jenkins-sg-id = "sg-0d7d8456081c42752"                 # Change this - Olalere
-  # private-subnet-id-1 = "subnet-01f9d4395b5e52f2c"       # Change this - Olalere
-  # private-subnet-id-2 = "subnet-0e30d976eec4f43d3"       # Change this - Olalere
-  # private-subnet-id-3 = "subnet-0d13ddb628c8aca5a"       # Change this - Olalere
-  # public-subnet-id-1 = "subnet-0e5f998c4e999dc38"        # Change this - Olalere
-  # public-subnet-id-2 = "subnet-03c5c710d3c7bd826"        # Change this - Olalere
-  # public-subnet-id-3 = "subnet-007777b30a07016a9"        # Change this - Olalere
-  # vault-public-ip = "18.130.223.106"                     # Change this - Olalere
-  # vpc-id = "vpc-07f539fa21cb80b49"        # Change this - Olalere
+  # cert-arn = "arn:aws:acm:eu-west-1:913454847504:certificate/6f41b741-8fa1-4394-a636-5d50ea085f2f"
+  # jenkins-public-ip = "54.217.137.15"
+  # jenkins-sg-id = "sg-02a2a426885511318"
+  # private-subnet-id-1 = "subnet-01ca3bbf2e37eeb31"
+  # private-subnet-id-2 = "subnet-0aa169c2d9b73df97"
+  # private-subnet-id-3 = "subnet-0a22cfc0636167d23"
+  # public-subnet-id-1 = "subnet-042bab39d2fb9a38e"
+  # public-subnet-id-2 = "subnet-0ae71ed76cbbdd13b"
+  # public-subnet-id-3 = "subnet-00d73160790f81448"
+  # vault-public-ip = "3.254.67.122"
+  # vpc-id = "vpc-052e7afa94a7c86df"
+
 }
+
+  
 
 # AWS_VPC 
 data "aws_vpc" "vpc" {

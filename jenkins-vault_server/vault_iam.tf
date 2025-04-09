@@ -38,7 +38,7 @@ resource "aws_iam_role_policy" "vault_kms_unseal" {
 }
 
 resource "aws_iam_instance_profile" "vault_kms_profile" {
-  name = "vault_kms_unseal-2"
+  name = "vault_kms_unseal-3"
   role = aws_iam_role.vault_kms_unseal.name
 
 }

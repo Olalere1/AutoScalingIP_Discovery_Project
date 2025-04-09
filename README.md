@@ -270,6 +270,12 @@ Step 9:
 
 1. In the infrastructure destroy script, Terraform remote backend was always destroyed before the infrastructure destroy commences/completes - meaning I ended up later having to manually destroy turns of infrastructure. To navigate through this challenge, I added a Sleep command and Checks to ensure infrastructure complete destruction before proceeding to remote state backend clean up and confirmation to that.
 
+2. There are situations were the instance profile of the servers are not destroyed along with other resources during the automated destroy process. And since no specific location on AWS console for instance profile destruction, creating the servers another time runs into a block, necessitating changing the naming of the instance profile in subsequent server deployment.
+
+<!--
+start with running create-s3.sh in main; if instance profile error occur, change the name slightly of the  server instance profile on both vault_iam and jenkins_iam, then cd into Jenkins-vaults_server and run terraform apply -auto-approve manually on the terminal. 
+-->
+
 
 
 
