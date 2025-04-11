@@ -32,7 +32,7 @@ Step 1:
 - Then do vault operator init; vault login; vault secrets enable -path=secret/kv; vault kv put secret/database username=petclinic password=petclinic (copy out the vault token to be updated in provider.tf script)
 -->
 
-- Create infrastructure (Infra) pipeline    
+- Create infrastructure (Infra) pipeline (Done)
 <!--
 [Install AWS CLI on Jenkins master server  and configure your AWS profile]
 
@@ -50,18 +50,22 @@ aws --version
 
 #5. Manually create a profile in ~/.aws/credentials on the Jenkins master server:
    aws configure etc
+                        OR
+   Add aws-access-key-id & aws-secret-access-key as a secret text in the credentials and use this 2 credentials and AWS region as an environment variable in the jenkinsfile
 
-using 1st Jenkinsfile with terraform script (init,fmt,validate, plan, approval, $action) - click lightweight checkout
+-- for the iac.tfvars not pushed to remote, add the iac.tfvars as a secret file on credentials and modify the terraform plan & action to include withcredentials([])
+
+- Set up git SCM for the infra pipeline, use jenkinsfile with terraform steps and build.
+
+-- using 1st Jenkinsfile with terraform script (init,fmt,validate, plan, approval, $action) - click lightweight checkout
 Ensuring it is parameterised (action - apply/destroy) - 
 
 Not sure though: #You might need to comment out the profile in backend.tf and provider.tf during infra-pipeline build!
 -->
 
-- Setup jenkins
+- Setup jenkins (Done)
 <!-- 
 - Add your git account in credentials (username with password - as kind, use git-token in the password space, ID:git-cred)
-
-- Set up git SCM for the infra pipeline, use jenkinsfile with terraform steps and build.
 
 - Among other steps, check and download SSH keypair from Jenkins infra-pipeline workspace directory, save/replace in local repo, then also give permission using the chmod 400 .pem, (thereafter add keypair to Jenkins global credentials). (This can be done from the cli command as well by ssh into Master server and go to workspace directory)
 
