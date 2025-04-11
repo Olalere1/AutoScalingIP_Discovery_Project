@@ -1,17 +1,17 @@
 locals {
   name = "auto-discovery-mono-app" 
 
-  # cert-arn = "arn:aws:acm:eu-west-1:913454847504:certificate/6f41b741-8fa1-4394-a636-5d50ea085f2f"
-  # jenkins-public-ip = "54.217.137.15"
-  # jenkins-sg-id = "sg-02a2a426885511318"
-  # private-subnet-id-1 = "subnet-01ca3bbf2e37eeb31"
-  # private-subnet-id-2 = "subnet-0aa169c2d9b73df97"
-  # private-subnet-id-3 = "subnet-0a22cfc0636167d23"
-  # public-subnet-id-1 = "subnet-042bab39d2fb9a38e"
-  # public-subnet-id-2 = "subnet-0ae71ed76cbbdd13b"
-  # public-subnet-id-3 = "subnet-00d73160790f81448"
-  # vault-public-ip = "3.254.67.122"
-  # vpc-id = "vpc-052e7afa94a7c86df"
+  cert-arn = "arn:aws:acm:eu-west-1:913454847504:certificate/b0035932-97a3-41b7-836b-4c60019453c8"
+  jenkins-public-ip = "34.244.78.87"
+  jenkins-sg-id = "sg-0c721eba30c292ff8"
+  private-subnet-id-1 = "subnet-043b9a4981f74fe5b"
+  private-subnet-id-2 = "subnet-028b544f3cfa5fb37"
+  private-subnet-id-3 = "subnet-076a94fafeba39234"
+  public-subnet-id-1 = "subnet-0b9c9fffdc370f116"
+  public-subnet-id-2 = "subnet-09dd6cb9e469ccf68"
+  public-subnet-id-3 = "subnet-08a7e8c939bd58059"
+  vault-public-ip = "34.243.41.133"
+  vpc-id = "vpc-041a978ecfd2b2c34"
 
 }
 

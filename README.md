@@ -12,21 +12,21 @@ EOT -->
 
 
 Step 1: 
-- Set up Jenkins and Vault Server, S3 bucket and DynamoDB table for state code managment using script create-s3.sh (manually on terminal)
+- Set up Jenkins and Vault Server, S3 bucket and DynamoDB table for state code managment using script create-s3.sh (manually on terminal) -- (Partially done!)
   <!-- 
-  - From the main directory do sh create-s3.sh to provision jenkins and vault server
+  - From the main directory do sh create-s3.sh to provision jenkins and vault server - done!
 
   Install necessary plugins to extend jenkins functionalities
-  Docker(commons, pipeline, API,...), ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps depenpency, owaps zap, git, github, (git client)
+  Docker(commons, pipeline, API,...), ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps depenpency, owaps zap, git, github, (git client) - done!
 
-   -  Also configure terraform in the Jenkins tools
-   -  Not necessary, already in user-data script: Configure Docker in the Jenkins tools also (name=docker, install automatically=from docker.com, download=latest)
+   -  Also configure terraform in the Jenkins tools - done!
+   -  Not necessary, already in user-data script: Configure Docker in the Jenkins tools also (name=docker, install automatically=from docker.com, download=latest) - done!
 
-   - In the system settings, configure terraform - install automatically, version (50312 linux - amd64)
+   - In the system settings, configure terraform - install automatically, version (50312 linux - amd64) - done in tools!
 
    -->
 
-- Initialise vault and store database credentials
+- Initialise vault and store database credentials (Done)
 <!-- 
 - cd into jenkins-vault_server & ssh into the vault server (IP can be found on main.tf also) using the vault-pri-key.pem created.
 - Then do vault operator init; vault login; vault secrets enable -path=secret/kv; vault kv put secret/database username=petclinic password=petclinic (copy out the vault token to be updated in provider.tf script)

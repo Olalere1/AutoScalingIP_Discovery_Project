@@ -4,6 +4,6 @@ provider "aws" {
 }
 
 provider "vault" {
-  token   = "s.Tqey2CbX1Qci6gKwwmmSKLJt"       #Update after creating Vault server - Olalere
+  token   = "s.8AVATiQVYyjVJm7tMwkZgVTA"       #Update after creating Vault server - Olalere
   address = "https://vault.aquinas.site/"
 }
