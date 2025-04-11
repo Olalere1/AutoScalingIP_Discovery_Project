@@ -4,7 +4,7 @@ output "jenkins-node-public-ip" {
 }
 
 output "jenkins-docker-public-ip" {
-  value = module.jenkins-servers.jenkins-slave-cloud-public-ip
+  value = module.jenkins-servers.jenkins-docker-public-ip
 }
 
 output "nexus-public-ip" {
