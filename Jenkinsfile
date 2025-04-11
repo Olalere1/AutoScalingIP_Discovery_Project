@@ -42,7 +42,9 @@ pipeline {
         }
         stage('terraform action') {
             steps {
-                sh 'terraform ${action} -var-file="iac.tfvars" -auto-approve'
+                with credentials([file(credentialsId: 'iac-tfvars', variable: 'IAC_VARS_FILE')]) {
+                  sh 'terraform ${action} -var-file=$IAC_VARS_FILE' -auto-approve'
+                }
             }
         }
     }
