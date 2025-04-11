@@ -27,7 +27,10 @@ pipeline {
         }
         stage ('terraform plan') {
             steps {
-                sh 'terraform plan -var-file="iac.tfvars"'
+                withCredentials([file(credentialsId: 'iac-tfvars', variable: 'IAC_VARS_FILE')]) {
+                  sh 'terraform plan -var-file=$IAC_VARS_FILE'
+                }
+
             }
         }
         stage('Request Approval to apply') {
