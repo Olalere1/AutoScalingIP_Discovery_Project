@@ -34,6 +34,23 @@ Step 1:
 
 - Create infrastructure (Infra) pipeline    
 <!--
+[Install AWS CLI on Jenkins master server  and configure your AWS profile]
+
+# 1. Download the AWS CLI v2 installer
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+# 2. Unzip the installer
+unzip awscliv2.zip
+
+# 3. Run the installer
+sudo ./aws/install
+
+# 4. Verify the installation
+aws --version
+
+#5. Manually create a profile in ~/.aws/credentials on the Jenkins master server:
+   aws configure etc
+
 using 1st Jenkinsfile with terraform script (init,fmt,validate, plan, approval, $action) - click lightweight checkout
 Ensuring it is parameterised (action - apply/destroy) - 
 
@@ -275,6 +292,8 @@ Step 9:
 <!--
 start with running create-s3.sh in main; if instance profile error occur, change the name slightly of the  server instance profile on both vault_iam and jenkins_iam, then cd into Jenkins-vaults_server and run terraform apply -auto-approve manually on the terminal. 
 -->
+
+3. AWSCLI and credentials not configured on Jenkins master server created, so had to be manually done for authentication from Jenkins into AWS CLI. A shorter method was adding access key ID and secret access key as credentials on Jenkins. 
 
 
 

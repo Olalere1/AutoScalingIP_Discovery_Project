@@ -1,9 +1,9 @@
 output "jenkins-node-public-ip" {
-  value = module.jenkins-slaves.jenkins-public-ip
+  value = module.jenkins-servers.jenkins-slave-node-public-ip
 }
 
 output "jenkins-cloud-public-ip" {
-  value = module.jenkins-slaves.jenkins-docker-public-ip
+  value = module.jenkins-servers.jenkins-slave-cloud-public-ip
 }
 
 output "nexus-public-ip" {
