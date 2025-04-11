@@ -50,7 +50,7 @@ Not sure though: #You might need to comment out the profile in backend.tf and pr
 
 - Duplicate cli terminal and SSH into jenkins node server using keypair from workspace, check jenkins node ip from console output for ssh purposes -> ssh -i .pem ec2-user@jenkins-node-IP; then exit
 
-- DNS name: jenkins.hullerdata.com (N/B)
+- DNS name: jenkins.aquinas.site (N/B)
 --> 
 
 - create Jenkins node connection on Jenkins master server and copy the jenkins node commands.    
