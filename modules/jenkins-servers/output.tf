@@ -1,3 +1,5 @@
+
+
 output "jenkins-node-public-ip" {
   description = "public ip of the jenkins-slave-node"
   value       = aws_instance.jenkins-slave-node.public_ip # Another option is to duplicate this block and remove the count.index

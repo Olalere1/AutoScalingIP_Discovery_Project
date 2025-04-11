@@ -22,8 +22,6 @@ resource "aws_instance" "jenkins-slave-node" {
   }
 }
 
-
-
 resource "aws_instance" "jenkins-slave-cloud" {
   #checkov:skip=CKV_AWS_135: Optimazation will be enfored on the stage/production environment
   #checkov:skip=CKV_AWS_126: detailed monitoring will be enfored on the stage/production environment

@@ -77,7 +77,7 @@ module "keypair" {
   source = "./modules/keypair"
 }
 
-module "jenkins-slaves" {
+module "jenkins-servers" {
   source        = "./modules/jenkins-servers"
   redhat-ami-id = var.redhat-ami-id
   ubuntu-ami-id = var.ubuntu-ami-id
