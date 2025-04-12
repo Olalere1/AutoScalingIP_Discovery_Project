@@ -10,7 +10,7 @@ apt install docker.io -y
 #ser to Docker group
 usermod -aG docker $USER
 newgrp docker
-hostnamectl set-hostname Docker
+hostnamectl set-hostname Docker      
 #to run at startup
 systemctl start docker
 systemctl enable docker

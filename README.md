@@ -87,6 +87,7 @@ launch method = via SSH
 under Host, add the private IP of the slave node and select the SSH credential created earlier
 Host key verification strategy: Manually trusted .....
 Availability: keep this agent online as much as possible
+Advance; JAVA_PATH (run "which java on jenkins-node cli); normally it should output this "/usr/bin/java", include in JAVA_PATH.
 
 SAVE
 Then click on jenkins-node created, you will see some commands, copy the appropriate one -                                  
@@ -173,7 +174,7 @@ pipeline {
 -->
 
 Step 5:
-- Setup nexus through the DNS name web interpase
+- Setup nexus through the DNS name web interfase
 <!-- 
 DNS name: nexus.hullerdata.com (N/B)
 SSH into nexus server on the CLI
