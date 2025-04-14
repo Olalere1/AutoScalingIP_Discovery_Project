@@ -64,7 +64,7 @@ Ensuring it is parameterised (action - apply/destroy) -
 Not sure though: #You might need to comment out the profile in backend.tf and provider.tf during infra-pipeline build!
 -->
 
-- Setup jenkins (D)
+- Setup jenkins (Done)
 <!-- 
 - Add your git account in credentials (username with password - as kind, use git-token in the password space, ID:git-cred)
 
@@ -80,23 +80,33 @@ Not sure though: #You might need to comment out the profile in backend.tf and pr
 Create (new) SSH credentials -using SSH username with private key selection, among other settings paste private key of the slave instance (cat ...pem to get)!
 
 Return back to managed jenkins - nodes- and create the node; type=permanent agent, name= to be used can be found in the jenkinscript.tf (for node)
+
 Number of executors = 1
+
 remote root directory = /opt/build
+
 label=(should be same as node agent specified on jenkinsfile)
+
 usage=as much as possible
+
 launch method = via SSH
+
 under Host, add the private IP of the slave node and select the SSH credential created earlier
+
 Host key verification strategy: Manually trusted .....
+
 Availability: keep this agent online as much as possible
-Advance; JAVA_PATH (run "which java on jenkins-node cli); normally it should output this "/usr/bin/java", include in JAVA_PATH.
+
+#Advance; JAVA_PATH (run "which java on jenkins-node cli); normally it should output this "/usr/bin/java", include in JAVA_PATH.
 
 SAVE
+
 Then click on jenkins-node created, you will see some commands, copy the appropriate one -                                  
 -->
 
 
 Step 2:
-- Update the jenkins node terraform userdata (i.e. in jenkinscript.tf line 50 and 52) with the jenkins node commands
+- Update the jenkins node terraform userdata (i.e. in jenkinscript.tf line 50 - 52) with the jenkins node commands, from the console, copy and run each line 50, 51 and 52 on the jenkins-node cli.
 <!--
 /Ensuring you also use current master jenkins ip address in both lines 50 and 52/
 SSH into the jenkins node public Ip server (details can be found from the console output of the infra-pipeline),
@@ -177,7 +187,7 @@ pipeline {
 Step 5:
 - Setup nexus through the DNS name web interfase
 <!-- 
-DNS name: nexus.hullerdata.com (N/B)
+DNS name: nexus.aquinas.site (N/B)
 SSH into nexus server on the CLI
 Click sign in on the web interphase of the nexus server
 

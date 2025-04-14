@@ -28,7 +28,7 @@ resource "aws_elb" "nexus-server-elb" {
   security_groups = var.nexus-sg-id
   subnets         = var.public-subnets
   listener {
-    instance_port      = 8081
+    instance_port      = 8085
     instance_protocol  = "http"
     lb_port            = 443
     lb_protocol        = "https"
@@ -39,7 +39,7 @@ resource "aws_elb" "nexus-server-elb" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 3
-    target              = "TCP:8081"
+    target              = "TCP:8085"
     interval            = 30
   }
 
