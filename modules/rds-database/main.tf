@@ -1,11 +1,11 @@
 # 🔹 RDS Subnet Group
 resource "aws_db_subnet_group" "rds-subnet-group" {
-  name        = "multi-az-rds-subnet-group"
+  name        = "multi-az-rds-subnet-group1"
   subnet_ids  = var.db-subnet-id          # Use private subnets for security
   description = "Subnet group for Multi-AZ RDS deployment"
 
   tags = {
-    Name = "Multi-AZ-RDS-Subnet-Group"
+    Name = "Multi-AZ-RDS-Subnet-Group1"
   }
 }
 

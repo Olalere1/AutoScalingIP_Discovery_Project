@@ -32,7 +32,7 @@ Step 1:
 - Then do vault operator init; vault login; vault secrets enable -path=secret/kv; vault kv put secret/database username=petclinic password=petclinic (copy out the vault token to be updated in provider.tf script)
 -->
 
-- Create infrastructure (Infra) pipeline (D)
+- Create infrastructure (Infra) pipeline (Done)
 <!--
 [Install AWS CLI on Jenkins master server  and configure your AWS profile]
 
@@ -64,7 +64,7 @@ Ensuring it is parameterised (action - apply/destroy) -
 Not sure though: #You might need to comment out the profile in backend.tf and provider.tf during infra-pipeline build!
 -->
 
-- Setup jenkins (Done)
+- Setup jenkins (D)
 <!-- 
 - Add your git account in credentials (username with password - as kind, use git-token in the password space, ID:git-cred)
 
