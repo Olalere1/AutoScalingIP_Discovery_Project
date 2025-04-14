@@ -1,20 +1,18 @@
 locals {
   name = "auto-discovery-mono-app" 
 
-  cert-arn = "arn:aws:acm:eu-west-1:913454847504:certificate/b0035932-97a3-41b7-836b-4c60019453c8"
-  jenkins-public-ip = "34.244.78.87"
-  jenkins-sg-id = "sg-0c721eba30c292ff8"
-  private-subnet-id-1 = "subnet-043b9a4981f74fe5b"
-  private-subnet-id-2 = "subnet-028b544f3cfa5fb37"
-  private-subnet-id-3 = "subnet-076a94fafeba39234"
-  public-subnet-id-1 = "subnet-0b9c9fffdc370f116"
-  public-subnet-id-2 = "subnet-09dd6cb9e469ccf68"
-  public-subnet-id-3 = "subnet-08a7e8c939bd58059"
-  vault-public-ip = "34.243.41.133"
-  vpc-id = "vpc-041a978ecfd2b2c34"
-
+  cert-arn = "arn:aws:acm:eu-west-1:913454847504:certificate/09a7576d-3610-4219-8170-1919428b878e"
+  jenkins-public-ip = "34.242.6.236"
+  jenkins-sg-id = "sg-0ea8037fdafcf8bfe"
+  private-subnet-id-1 = "subnet-0d515a6fc6a5252e4"
+  private-subnet-id-2 = "subnet-0ed65288bb8cb5dea"
+  private-subnet-id-3 = "subnet-09df540d48a99c250"
+  public-subnet-id-1 = "subnet-094f8514bd7702925"
+  public-subnet-id-2 = "subnet-0b7531b528c8450f3"
+  public-subnet-id-3 = "subnet-0e3b93342bfb3e845"
+  vault-public-ip = "54.73.114.69"
+  vpc-id = "vpc-0522d5c49d5c008d1"
 }
-
   
 
 # AWS_VPC 

@@ -18,8 +18,10 @@ sed -i '2s/-Xms2703m/-Xms512m/' /app/nexus/bin/nexus.vmoptions
 sed -i '3s/-Xmx2703m/-Xmx512m/' /app/nexus/bin/nexus.vmoptions
 sed -i '4s/-XX:MaxDirectMemorySize=2703m/-XX:MaxDirectMemorySize=512m/' /app/nexus/bin/nexus.vmoptions
 sudo touch /etc/systemd/system/nexus.service
+
+
 sudo cat <<EOT> /etc/systemd/system/nexus.service
-[Unit]
+[Unit] 
 Description=nexus service
 After=network.target
 [Service]
@@ -34,6 +36,8 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 EOT
+
+
 sudo ln -s /app/nexus/bin/nexus /etc/init.d/nexus
 sudo chkconfig --add nexus
 sudo chkconfig --levels 345 nexus on

@@ -12,15 +12,15 @@ EOT -->
 
 
 Step 1: 
-- Set up Jenkins and Vault Server, S3 bucket and DynamoDB table for state code managment using script create-s3.sh (manually on terminal) -- (Partially done!)
+- Set up Jenkins and Vault Server, S3 bucket and DynamoDB table for state code managment using script create-s3.sh (manually on terminal) -- (Done)
   <!-- 
   - From the main directory do sh create-s3.sh to provision jenkins and vault server - done!
 
   Install necessary plugins to extend jenkins functionalities
-  Docker(commons, pipeline, API,...), ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps depenpency, owaps zap, git, github, (git client) - done!
+  Docker(commons, pipeline, API,...), ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps depenpency, owaps zap, git, github, (git client) - d!
 
    -  Also configure terraform in the Jenkins tools - done!
-   -  Not necessary, already in user-data script: Configure Docker in the Jenkins tools also (name=docker, install automatically=from docker.com, download=latest) - done!
+   -  Not necessary, already in user-data script: Configure Docker in the Jenkins tools also (name=docker, install automatically=from docker.com, download=latest) - d!
 
    - In the system settings, configure terraform - install automatically, version (50312 linux - amd64) - done in tools!
 
@@ -32,7 +32,7 @@ Step 1:
 - Then do vault operator init; vault login; vault secrets enable -path=secret/kv; vault kv put secret/database username=petclinic password=petclinic (copy out the vault token to be updated in provider.tf script)
 -->
 
-- Create infrastructure (Infra) pipeline (Done)
+- Create infrastructure (Infra) pipeline (D)
 <!--
 [Install AWS CLI on Jenkins master server  and configure your AWS profile]
 
@@ -40,6 +40,7 @@ Step 1:
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
 # 2. Unzip the installer
+sudo yum install unzip
 unzip awscliv2.zip
 
 # 3. Run the installer
@@ -298,7 +299,7 @@ Step 9:
 start with running create-s3.sh in main; if instance profile error occur, change the name slightly of the  server instance profile on both vault_iam and jenkins_iam, then cd into Jenkins-vaults_server and run terraform apply -auto-approve manually on the terminal. 
 -->
 
-3. AWSCLI and credentials not configured on Jenkins master server created, so had to be manually done for authentication from Jenkins into AWS CLI. A shorter method was adding access key ID and secret access key as credentials on Jenkins. 
+3. AWSCLI and credentials not configured on Jenkins master server (user_data) created, so had to be manually done for authentication from Jenkins into AWS CLI. A shorter method was adding access key ID and secret access key as credentials on Jenkins. 
 
 
 
