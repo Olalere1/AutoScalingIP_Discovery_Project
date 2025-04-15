@@ -17,7 +17,7 @@ Step 1:
   - From the main directory do sh create-s3.sh to provision jenkins and vault server - done!
 
   Install necessary plugins to extend jenkins functionalities
-  Docker(commons, pipeline, API,...), ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps depenpency, owaps zap, git, github, (git client) - d!
+  Docker(commons, pipeline, API,...), ssh agent, Sonarqube scanner, Slack, maven-integration, pipeline stage view, terraform, nexus artifact uploader, owaps dependency, owaps zap, git, github, (git client) - d!
 
    -  Also configure terraform in the Jenkins tools - done!
    -  Not necessary, already in user-data script: Configure Docker in the Jenkins tools also (name=docker, install automatically=from docker.com, download=latest) - d!
