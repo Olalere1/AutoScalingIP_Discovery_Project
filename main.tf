@@ -14,7 +14,6 @@ locals {
   vpc-id = "vpc-070d19a647d599424"
 }
  
-
 # AWS_VPC 
 data "aws_vpc" "vpc" {
   id = local.vpc-id

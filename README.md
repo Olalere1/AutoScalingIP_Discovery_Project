@@ -131,20 +131,33 @@ Step 4:
 (Don't bother on this, already in userdata script -> SSH using infra pem, into jenkins cloud (ubuntu) and do sudo hostnamectl to set-hostname to jenkins-cloud, before exiting; Do same for jenkins node (ec2-user)!)
 
 name=docker-slave (or jenkins-cloud); click Docker Cloud details and configure;
+
 docker host uri: tcp://check console output for jenkins cloud public IP:port number(4243)
+
 server credentials - Create a credential on Jenkins using username and password (Jenkins/password), ID: docker-cred (to be used below later)
+
 click enabled; test connection
 
 click=> Docker Agent template -> Add Docker template;
+
 label=docker-slave (or jenkins-slave)
+
 click Enabled
+
 Name=docker-slave  (or jenkins-slave)
+
 Docker Image = Pick image built name from user_data of jenkins-docker.tf (line 22) or SSH into Jenkins docker slave and do "docker image ls" to get image name!
+
 Remote File System Root = /home/jenkins
+
 Pull strategy - "never pull"
+
 Connect method - "connect with SSH"
+
 #server credentials - Create a credential on Jenkins using username and password (Jenkins/password), ID: docker-cred.
+
 SSH key - "use configured SSH credentials (and select appropriate jenkins credential in the dropdown)
+
 Host key verification strategy: Non verifying
 
 AND SAVE
