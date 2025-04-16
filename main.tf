@@ -1,20 +1,20 @@
 locals {
-  name = "auto-discovery-mono-app" 
+  name = "auto-discovery-mono-app"
 
-  cert-arn = "arn:aws:acm:eu-west-1:913454847504:certificate/2947f91f-2e1e-4291-8603-15daa2862ab8"
-  jenkins-public-ip = "63.33.69.12"
-  jenkins-sg-id = "sg-022e6c581480fa354"
+  cert-arn            = "arn:aws:acm:eu-west-1:913454847504:certificate/2947f91f-2e1e-4291-8603-15daa2862ab8"
+  jenkins-public-ip   = "63.33.69.12"
+  jenkins-sg-id       = "sg-022e6c581480fa354"
   private-subnet-id-1 = "subnet-0fa1ca9b28686406b"
   private-subnet-id-2 = "subnet-0535717d598a522f0"
   private-subnet-id-3 = "subnet-0f25671e30bd7ef8d"
-  public-subnet-id-1 = "subnet-017015bc8bb9cd9fb"
-  public-subnet-id-2 = "subnet-0bd28ad9540a3763e"
-  public-subnet-id-3 = "subnet-005004f01ffc9ea82"
-  vault-public-ip = "54.216.195.200"
-  vpc-id = "vpc-0ccaad2440fbaf71f"
-  
+  public-subnet-id-1  = "subnet-017015bc8bb9cd9fb"
+  public-subnet-id-2  = "subnet-0bd28ad9540a3763e"
+  public-subnet-id-3  = "subnet-005004f01ffc9ea82"
+  vault-public-ip     = "54.216.195.200"
+  vpc-id              = "vpc-0ccaad2440fbaf71f"
+
 }
- 
+
 # AWS_VPC 
 data "aws_vpc" "vpc" {
   id = local.vpc-id
@@ -142,7 +142,7 @@ module "rds-database" {
   source       = "./modules/rds-database"
   db-subnet-id = [data.aws_subnet.private-subnet-1.id, data.aws_subnet.private-subnet-2.id, data.aws_subnet.private-subnet-3.id]
   db-name      = var.db-name
-  db-username  = data.vault_generic_secret.db-secret.data["username"] 
+  db-username  = data.vault_generic_secret.db-secret.data["username"]
   db-password  = data.vault_generic_secret.db-secret.data["password"]
   vpc-sg-id    = [module.security-groups.rds-sg-id]
 }

@@ -5,9 +5,9 @@ sudo yum update -y
 sudo yum install wget -y
 sudo yum install java-1.8.0-openjdk.x86_64 -y
 sudo mkdir /app && cd /app
-sudo wget http://download.sonatype.com/nexus/3/nexus-3.70.3-01-unix.tar.gz
-sudo tar -xvf nexus-3.70.3-01-unix.tar.gz
-sudo mv nexus-3.70.3-01 nexus
+sudo wget http://download.sonatype.com/nexus/3/nexus-3.23.0-03-unix.tar.gz
+sudo tar -xvf nexus-3.23.0-03-unix.tar.gz
+sudo mv nexus-3.23.0-03 nexus
 sudo adduser nexus
 sudo chown -R nexus:nexus /app/nexus
 sudo chown -R nexus:nexus /app/sonatype-work

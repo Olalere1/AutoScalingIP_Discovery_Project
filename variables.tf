@@ -1,6 +1,6 @@
 ########################
 variable "region" {}
-#variable "profile" {}
+variable "profile" {}
 variable "project-name" {}
 variable "instance-type" {}
 
