@@ -40,7 +40,7 @@ Step 1:
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
 # 2. Unzip the installer
-sudo yum install unzip
+sudo yum install unzip -y
 unzip awscliv2.zip
 
 # 3. Run the installer
